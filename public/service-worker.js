@@ -44,7 +44,21 @@ self.addEventListener('activate', function(event) {
   return self.clients.claim();
 });
 
+// Cache network with cache fallbac
+/*
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    fetch(event.request)
+      .catch(function(err) {
+        return caches.match(event.request)
+      })
+  );
+});
+*/
 
+
+// Cache with network fallback
+/*
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
@@ -70,3 +84,15 @@ self.addEventListener('fetch', function(event) {
       })
   );
 });
+*/
+
+// Cache only function
+/*
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+  );
+});
+*/
+
+
